@@ -103,17 +103,17 @@ def find_qualifying_loans(bank_data, credit_score, debt, income, loan, home_valu
 
     return bank_data_filtered
 
-# Save qualifying loans into a new CSV File.
 def save_csv(qualifying_loans):
-       
+    """Ask for a list of qualifying loans and save qualifying loans as a new CSV file.
+
+    Returns:
+    New CSV file that includes qualifying load bank data.
+    """
     # Set the output header
     header = ["Lender", "Max Loan", "Max LTV", "Max DTI", "Min Credit Score", "Interest_Rate"]
 
     # Set the output file path
     csvpath = Path("qualifying_loans.csv")
-
-    # Inidicate to user that CSV file is being generated. 
-    print("Writing the data to a CSV file...")
 
     # Use the csv library and csv.writer to write the header row and each row of qualifying_loans[loan] from the qualifying_loans list.
     with open(csvpath, 'w', newline='') as csvfile:
@@ -122,6 +122,9 @@ def save_csv(qualifying_loans):
         for loan in qualifying_loans:  
             csvwriter.writerow(loan)
 
+    # Exit function with success message.        
+    sys.exit(f"Thank you, your file has been generated!")
+
 def save_qualifying_loans(qualifying_loans):
     """Saves the qualifying loans to a CSV file.
 
@@ -129,7 +132,8 @@ def save_qualifying_loans(qualifying_loans):
         qualifying_loans (list of lists): The qualifying bank loans.
     """
     # @TODO: Complete the usability dialog for savings the CSV Files.
-    # YOUR CODE HERE!
+    action = questionary.select("Would you like to save a qualifying_loans.csv file?", choices=["yes", "no"]).ask()
+    return action
 
 def run():
     """The main function for running the script."""
@@ -145,11 +149,20 @@ def run():
         bank_data, credit_score, debt, income, loan_amount, home_value
     )
 
+    # Initiates action to save a csv or not to save a csv.
+    action = save_qualifying_loans(qualifying_loans)
+
+    # Processes the chosen action
+    if action == "no":
+        sys.exit(f"Thank you, good bye!")
+    else: 
+        save_csv(qualifying_loans)
+
     # Save qualifying loans
-    save_qualifying_loans(qualifying_loans)
+    # save_qualifying_loans(qualifying_loans)
     
-    #Export qualifying loans to CSV
-    save_csv(qualifying_loans)
+    # Export qualifying loans to CSV
+    # save_csv(qualifying_loans)
 
 if __name__ == "__main__":
     fire.Fire(run)
