@@ -1,6 +1,10 @@
-# Project Title
+# Module 2 Challenge - Loan Qualifier Application with CSV Output.
 
-Just after the title, introduce your project by describing attractively what the project is about and what is the main problem that inspires you to create this project or what is the main contribution for the potential user of your project.
+---
+
+## Description
+
+This code adds on to our existing Loan Qualifier Application by adding on new function that will save and export all qualifying loans as a new CSV file.  This challenge builds on the skills that we have learned through Module 1 and Module 2 thus far. 
 
 ---
 
