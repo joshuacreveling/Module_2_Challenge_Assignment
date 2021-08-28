@@ -129,12 +129,14 @@ def save_qualifying_loans(qualifying_loans):
                 sys.exit(f"Your request to save a new csv file has been canceled.")
 
     # Once user has confirmed saving csv, prompt user for file path to save the file.
-    # Run 
+    # Run save_csv function. 
             else:
                 new_csvpath = questionary.path("Enter file path to your new qualifying loan sheet (.csv):").ask()
                 new_csvpath = Path(new_csvpath)
+                # Set the output header
+                header = ["Lender", "Max Loan", "Max LTV", "Max DTI", "Min Credit Score", "Interest_Rate"]
                 try:
-                    save_csv(qualifying_loans, new_csvpath)
+                    save_csv(header, qualifying_loans, new_csvpath)
                 except:
                     sys.exit(f"Invalid file path!") 
 
