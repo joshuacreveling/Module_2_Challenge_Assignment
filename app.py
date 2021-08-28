@@ -122,7 +122,7 @@ def save_qualifying_loans(qualifying_loans):
         if action == "no":
             sys.exit(f"Thank you. Have a good day!")
     
-    # Give user one more option to opt out of saving file.
+    # Give user one more opportunity to opt out of saving file.
         else:
             next_action = questionary.select("Are you sure you'd like to save a new .csv file with your qualifying bank loans?", choices=["yes", "no"]).ask()
             if next_action == "no":
