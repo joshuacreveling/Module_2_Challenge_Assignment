@@ -6,14 +6,14 @@ This is a command line application to match applicants with qualifying loans.
 Example:
     $ python app.py
 """
-#Imports // Added 'import csv'
-import csv
 import sys
 import fire
 import questionary
 from pathlib import Path
 
 from qualifier.utils.fileio import load_csv
+#import new save_csv function from fileio.py
+from qualifier.utils.fileio import save_csv
 
 from qualifier.utils.calculators import (
     calculate_monthly_debt_ratio,
@@ -103,28 +103,7 @@ def find_qualifying_loans(bank_data, credit_score, debt, income, loan, home_valu
 
     return bank_data_filtered
 
-def save_csv(qualifying_loans):
-    """Ask for a list of qualifying loans and save qualifying loans as a new CSV file.
-
-    Returns:
-    New CSV file that includes qualifying load bank data.
-    """
-    # Set the output header
-    header = ["Lender", "Max Loan", "Max LTV", "Max DTI", "Min Credit Score", "Interest_Rate"]
-
-    # Set the output file path
-    csvpath = Path("qualifying_loans.csv")
-
-    # Use the csv library and csv.writer to write the header row and each row of qualifying_loans[loan] from the qualifying_loans list.
-    with open(csvpath, 'w', newline='') as csvfile:
-        csvwriter = csv.writer(csvfile) 
-        csvwriter.writerow(header)  
-        for loan in qualifying_loans:  
-            csvwriter.writerow(loan)
-
-    # Exit function with success message.        
-    sys.exit(f"Thank you, your file has been generated!")
-
+ 
 def save_qualifying_loans(qualifying_loans):
     """Saves the qualifying loans to a CSV file.
 
@@ -132,8 +111,26 @@ def save_qualifying_loans(qualifying_loans):
         qualifying_loans (list of lists): The qualifying bank loans.
     """
     # @TODO: Complete the usability dialog for savings the CSV Files.
-    action = questionary.select("Would you like to save a qualifying_loans.csv file?", choices=["yes", "no"]).ask()
-    return action
+    
+    if len(qualifying_loans) == 0:
+        sys.exit(f"You don't qualify for any loans.")
+    else:
+        action = questionary.select("Would you like to save a qualifying_loans.csv file?", choices=["yes", "no"]).ask()
+        if action == "no":
+            sys.exit(f"Thank you. Have a good day!")
+        else:
+            next_action = questionary.select("Are you sure you want to save a qualifying_loans.csv file?", choices=["yes", "no"]).ask()
+            if next_action == "no":
+                sys.exit(f"Thank you. Your request to export csv has been cancelled.")
+            else:
+                new_csvpath = questionary.text("Please provide path to save new csv.").ask()
+                new_csvpath = Path(new_csvpath)
+                if not new_csvpath.exists():
+                    sys.exit(f"Oops! Can't find this path: {new_csvpath}")
+                else: 
+                    save_csv(qualifying_loans, new_csvpath)
+
+
 
 def run():
     """The main function for running the script."""
@@ -150,16 +147,13 @@ def run():
     )
 
     # Initiates action to save a csv or not to save a csv.
-    action = save_qualifying_loans(qualifying_loans)
+    # action = save_qualifying_loans(qualifying_loans)
 
     # Processes the chosen action
-    if action == "no":
-        sys.exit(f"Thank you, good bye!")
-    else: 
-        save_csv(qualifying_loans)
+    
 
-    # Save qualifying loans
-    # save_qualifying_loans(qualifying_loans)
+    #Save qualifying loans
+    save_qualifying_loans(qualifying_loans)
     
     # Export qualifying loans to CSV
     # save_csv(qualifying_loans)
