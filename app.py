@@ -114,19 +114,19 @@ def save_qualifying_loans(qualifying_loans):
 
     # If the user does not qualify for any loans, notify and exit. 
     if len(qualifying_loans) == 0:
-        sys.exit(f"You don't qualify for any loans.")
+        sys.exit(f"You do not qualify for any loans.")
 
     # If the user qualifies for loans, give user (yes or no) option to save .csv file.
     else:
-        action = questionary.select("Would you like to save a qualifying_loans.csv file?", choices=["yes", "no"]).ask()
+        action = questionary.select("Would you like to save a new .csv file with your qualifying bank loans?", choices=["yes", "no"]).ask()
         if action == "no":
             sys.exit(f"Thank you. Have a good day!")
     
     # Give user one more option to opt out of saving file.
         else:
-            next_action = questionary.select("Are you sure you want to save a qualifying_loans.csv file?", choices=["yes", "no"]).ask()
+            next_action = questionary.select("Are you sure you'd like to save a new .csv file with your qualifying bank loans?", choices=["yes", "no"]).ask()
             if next_action == "no":
-                sys.exit(f"Thank you. Your request to export csv has been cancelled.")
+                sys.exit(f"Your request to save a new csv file has been canceled.")
 
     # Once user has confirmed saving csv, prompt user for file path to save the file.
     # Run 

@@ -49,7 +49,7 @@ def save_csv(csv_data, csvpath):
     # csvpath = Path("qualifying_loans.csv")
 
     # Note to user that csv is being saved. 
-    print("Saving your new csv....") 
+    print("Writing the data to a CSV file...") 
 
     # Use the csv library and csv.writer to write the header row and each row of qualifying_loans[loan] from the qualifying_loans list.
     with open(csvpath, 'w', newline='') as csvfile:
