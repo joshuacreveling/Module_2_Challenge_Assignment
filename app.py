@@ -111,25 +111,32 @@ def save_qualifying_loans(qualifying_loans):
         qualifying_loans (list of lists): The qualifying bank loans.
     """
     # @TODO: Complete the usability dialog for savings the CSV Files.
-    
+
+    # If the user does not qualify for any loans, notify and exit. 
     if len(qualifying_loans) == 0:
         sys.exit(f"You don't qualify for any loans.")
+
+    # If the user qualifies for loans, give user (yes or no) option to save .csv file.
     else:
         action = questionary.select("Would you like to save a qualifying_loans.csv file?", choices=["yes", "no"]).ask()
         if action == "no":
             sys.exit(f"Thank you. Have a good day!")
+    
+    # Give user one more option to opt out of saving file.
         else:
             next_action = questionary.select("Are you sure you want to save a qualifying_loans.csv file?", choices=["yes", "no"]).ask()
             if next_action == "no":
                 sys.exit(f"Thank you. Your request to export csv has been cancelled.")
-            else:
-                new_csvpath = questionary.text("Please provide path to save new csv.").ask()
-                new_csvpath = Path(new_csvpath)
-                if not new_csvpath.exists():
-                    sys.exit(f"Oops! Can't find this path: {new_csvpath}")
-                else: 
-                    save_csv(qualifying_loans, new_csvpath)
 
+    # Once user has confirmed saving csv, prompt user for file path to save the file.
+    # Run 
+            else:
+                new_csvpath = questionary.path("Enter file path to your new qualifying loan sheet (.csv):").ask()
+                new_csvpath = Path(new_csvpath)
+                try:
+                    save_csv(qualifying_loans, new_csvpath)
+                except:
+                    sys.exit(f"Invalid file path!") 
 
 
 def run():

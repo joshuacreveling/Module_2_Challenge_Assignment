@@ -36,6 +36,7 @@ def save_csv(csv_data, csvpath):
 
     Args:
         csv data (List of Lists): Matrix of data to be exported to csv.
+        csv path (File Path): File path input to indicate where to save csv.
 
     Returns:
         Exports a CSV file to path indicated by user.
@@ -45,7 +46,10 @@ def save_csv(csv_data, csvpath):
     #header = ["Lender", "Max Loan", "Max LTV", "Max DTI", "Min Credit Score", "Interest_Rate"]
 
     # Set the output file path
-    #csvpath = Path("qualifying_loans.csv")
+    # csvpath = Path("qualifying_loans.csv")
+
+    # Note to user that csv is being saved. 
+    print("Saving your new csv....") 
 
     # Use the csv library and csv.writer to write the header row and each row of qualifying_loans[loan] from the qualifying_loans list.
     with open(csvpath, 'w', newline='') as csvfile:
