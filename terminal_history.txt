@@ -1,0 +1,50 @@
+  469  git push
+  470  git status
+  471  git status
+  472  git add app.py
+  473  git add qualifier/utils/fileio.py
+  474  git status
+  475  git commit -m "Revised user prompts."
+  476  git push
+  477  git status
+  478  git add app.py
+  479  git add qualifier/utils/fileio.py
+  480  git status
+  481  git commit -m "Code clean up."
+  482  git push
+  483  history > terminal_history.txt
+  484  history 50 > terminal_history.txt
+  485  git status
+  486  git status
+  487  git add app.py
+  488  git commit -m "Updated comments."
+  489  git push
+  490  conda deactivate
+  491  exit
+  492  cd FinTech
+  493  conda activate dev
+  494  code
+  495  cd 2
+  496  cd Module_2_Challenge
+  497  cd Module_2_Challenge_Assignment
+  498  git status
+  499  conda deactivate
+  500  exit
+  501  cd FinTech
+  502  cd 2
+  503  conda activate dev
+  504  code
+  505  cd Module_2_Challenge
+  506  cd Module_2_Challenge_Assignment
+  507  git status
+  508  git add README.md
+  509  git images
+  510  git add images
+  511  git status
+  512  git commit -m "Updated README.md."
+  513  git push
+  514  git status
+  515  git add README.md
+  516  git commit -m "Updated README.md"
+  517  git push
+  518  history 50 > terminal_history.txt
