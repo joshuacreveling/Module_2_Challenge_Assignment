@@ -12,8 +12,7 @@ import questionary
 from pathlib import Path
 
 from qualifier.utils.fileio import load_csv
-#import new save_csv function from fileio.py
-from qualifier.utils.fileio import save_csv
+from qualifier.utils.fileio import save_csv #import new save_csv function from fileio.py
 
 from qualifier.utils.calculators import (
     calculate_monthly_debt_ratio,
@@ -103,7 +102,7 @@ def find_qualifying_loans(bank_data, credit_score, debt, income, loan, home_valu
 
     return bank_data_filtered
 
- 
+
 def save_qualifying_loans(qualifying_loans):
     """Saves the qualifying loans to a CSV file.
 
@@ -111,6 +110,8 @@ def save_qualifying_loans(qualifying_loans):
         qualifying_loans (list of lists): The qualifying bank loans.
     """
     # @TODO: Complete the usability dialog for savings the CSV Files.
+
+    # Translate business requirements into code. 
 
     # If the user does not qualify for any loans, notify and exit. 
     if len(qualifying_loans) == 0:
@@ -154,18 +155,10 @@ def run():
     qualifying_loans = find_qualifying_loans(
         bank_data, credit_score, debt, income, loan_amount, home_value
     )
-
-    # Initiates action to save a csv or not to save a csv.
-    # action = save_qualifying_loans(qualifying_loans)
-
-    # Processes the chosen action
     
-
     #Save qualifying loans
     save_qualifying_loans(qualifying_loans)
-    
-    # Export qualifying loans to CSV
-    # save_csv(qualifying_loans)
+
 
 if __name__ == "__main__":
     fire.Fire(run)
