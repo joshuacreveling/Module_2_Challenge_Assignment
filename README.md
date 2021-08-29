@@ -4,9 +4,11 @@
 
 ## Description
 
-This code builds off of our existing Loan Qualifier Application by adding a new function, *'save_qualifying_loans()'*, directly to **app.py** as well as adding and utilizing a modularized funtion, *'csv_save()'*, to **fileio.py** that will save qualifying loans as a new CSV file.  This challenge builds on the skills that we have learned through Module 1 and Module 2 thus far.
+This is a command-line interface application that prompts the user for their personal loan qualifying metrics and if they qualify for one or more loans, will prompt the user to save their new qualifying loan data as a new .csv file.
 
-This is a command-line interface application that prompts the user for their personal loan qualifying metrics and if they qualify for one or more loans, will prompt the user to save their loan options as a new .csv file.
+This code builds off of our existing Loan Qualifier Application by adding a new function, *'save_qualifying_loans()'*, directly to **app.py** as well as adding and utilizing a modularized funtion, *'csv_save()'*, to **fileio.py**.
+
+This challenge builds on the skills that we have learned through Module 1 and Module 2 thus far.
 
 ---
 

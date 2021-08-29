@@ -1,12 +1,3 @@
-  469  git push
-  470  git status
-  471  git status
-  472  git add app.py
-  473  git add qualifier/utils/fileio.py
-  474  git status
-  475  git commit -m "Revised user prompts."
-  476  git push
-  477  git status
   478  git add app.py
   479  git add qualifier/utils/fileio.py
   480  git status
@@ -48,3 +39,12 @@
   516  git commit -m "Updated README.md"
   517  git push
   518  history 50 > terminal_history.txt
+  519  git status
+  520  git add terminal_history.txt
+  521  git commit -m "Adding terminal_history.txt for module 2 challenge requirement."
+  522  git push
+  523  git status
+  524  git add app.py
+  525  git commit -m "Cleanup formatting and QC."
+  526  git push
+  527  history 50 > terminal_history.txt
