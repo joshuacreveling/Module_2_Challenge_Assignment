@@ -41,7 +41,7 @@ python app.py
 
 Upon launching the loan qualifier application you will be prompted with the following questions requesting personal finanical data.  In the example below, user text is colored "yellow".
 
-![user_financial_data](./Images/user_financial_data.png)
+![user_financial_data](user_financial_data.png)
 
 If the user qualifies for one or more loans, the program will then ask the user if they would like to save a new .csv file.  Using the arrow key, the user will select 'yes' or 'no'.
 The user will then be asked to confirm once more that they would like to save a new .csv file.  Once again, using the arrow key, the user will select 'yes' or 'no'.
@@ -49,7 +49,7 @@ After recieving confirmation from the user, the program will prompt the user for
 The progarm will notify the user it is writing data to a CSV file and will output confirmation once completed.  
 In the example below, user text is colored "yellow".  
 
-![user_prompt](./Images/user_prompt.png)
+![user_prompt](user_prompt.png)
 
 ---
 
